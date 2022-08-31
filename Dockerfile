@@ -15,7 +15,7 @@ RUN apt update && apt dist-upgrade -y && \
     BHPATH=`wget -O- -q https://github.com/BloodHoundAD/BloodHound/releases/latest | grep tar.gz | cut -f 2 -d '"' | head -1` && \
     mkdir -p /opt && cd /opt && \
     wget -O bh.tar.gz https://github.com/$BHPATH && tar xf bh.tar.gz && rm bh.tar.gz && cd * && \
-    npm install && npm run linuxbuild && \
+    npm install && npm run build:linux && \
     cd BloodHound-linux-x64 && ln -s $PWD/BloodHound /BloodHound
 
 COPY run.sh /run.sh
