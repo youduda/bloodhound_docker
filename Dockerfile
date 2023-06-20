@@ -2,9 +2,9 @@ FROM ubuntu:latest
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && apt dist-upgrade -y && \
-    apt install -y wget gnupg unzip libgtk-3-0 libgbm1 && \
+    apt install -y wget gnupg unzip libgtk-3-0 libgbm1 libx11-xcb1 && \
     wget -O- https://debian.neo4j.com/neotechnology.gpg.key | apt-key add - && \
-    echo 'deb https://debian.neo4j.com stable latest' >> /etc/apt/sources.list.d/neo4j.list && \
+    echo 'deb https://debian.neo4j.com stable 4.4' >> /etc/apt/sources.list.d/neo4j.list && \
     apt update && \
     apt install -y neo4j && \
     mkdir -p /opt && cd /opt && \
